@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - AI POD OS</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="login-body">
+    <main class="login-panel">
+      <h1>AI POD OS</h1>
+      <p>Sign in to the local operating dashboard.</p>
+      <form id="login-form">
+        <label>Username<input name="username" autocomplete="username" value="admin"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" value="admin"></label>
+        <button class="button primary" type="submit">Sign In</button>
+      </form>
+    </main>
+    <script>
+      document.getElementById("login-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const body = Object.fromEntries(new FormData(event.currentTarget).entries());
+        const response = await fetch("/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+        if (response.ok) location.href = "/";
+        else alert((await response.json()).error || "Login failed");
+      });
+    </script>
+  </body>
+</html>

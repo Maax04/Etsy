@@ -1,0 +1,20 @@
+services:
+  pod-os:
+    build: .
+    ports:
+      - "8787:8787"
+    environment:
+      POD_OS_HOST: "0.0.0.0"
+      POD_OS_PORT: "8787"
+      POD_OS_DATABASE: "/app/data/pod_os.sqlite3"
+      POD_OS_DATA_DIR: "/app/data"
+      POD_OS_ASSET_DIR: "/app/data/assets"
+      POD_OS_EXPORT_DIR: "/app/data/exports"
+      POD_OS_SESSION_SECRET: "${POD_OS_SESSION_SECRET:-local-dev-change-me}"
+      POD_OS_ADMIN_USERNAME: "${POD_OS_ADMIN_USERNAME:-admin}"
+      POD_OS_ADMIN_PASSWORD: "${POD_OS_ADMIN_PASSWORD:-admin}"
+    volumes:
+      - pod_os_data:/app/data
+
+volumes:
+  pod_os_data:

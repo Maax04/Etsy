@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: pod-os-web
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /login
+    disk:
+      name: pod-os-data
+      mountPath: /app/data
+      sizeGB: 1
+    envVars:
+      - key: POD_OS_HOST
+        value: 0.0.0.0
+      - key: POD_OS_PORT
+        value: 8787
+      - key: POD_OS_DATABASE
+        value: /app/data/pod_os.sqlite3
+      - key: POD_OS_DATA_DIR
+        value: /app/data
+      - key: POD_OS_ASSET_DIR
+        value: /app/data/assets
+      - key: POD_OS_EXPORT_DIR
+        value: /app/data/exports
+      - key: POD_OS_ENABLE_EMBEDDED_WORKER
+        value: true
+      - key: POD_OS_WORKER_INTERVAL_SECONDS
+        value: 1800
+      - key: POD_OS_SESSION_SECRET
+        generateValue: true
+      - key: POD_OS_ADMIN_USERNAME
+        sync: false
+      - key: POD_OS_ADMIN_PASSWORD
+        sync: false
+      - key: POD_OS_OPERATOR_USERNAME
+        sync: false
+      - key: POD_OS_OPERATOR_PASSWORD
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ETSY_CLIENT_ID
+        sync: false
+      - key: ETSY_CLIENT_SECRET
+        sync: false
+      - key: ETSY_REDIRECT_URI
+        sync: false
+      - key: ETSY_SHOP_ID
+        sync: false
+      - key: PRINTIFY_API_TOKEN
+        sync: false
+      - key: PRINTIFY_SHOP_ID
+        sync: false

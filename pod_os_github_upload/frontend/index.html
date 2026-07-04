@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Print-on-Demand Operating System</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <strong>AI POD OS</strong>
+        <span>Marketplace command center</span>
+      </div>
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#agents">Agents</a>
+        <a href="#research">Research</a>
+        <a href="#products">Products</a>
+        <a href="#approval">Approval</a>
+        <a href="#orders">Orders</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#settings">Settings</a>
+        <a href="#logs">Logs</a>
+      </nav>
+    </aside>
+
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>AI Print-on-Demand Operating System</h1>
+          <p>Agent-based Etsy + Printify MVP with human approval gates.</p>
+        </div>
+        <div class="top-actions">
+          <button id="theme-toggle" class="icon-button" title="Toggle theme">◐</button>
+          <a class="button secondary" href="/api/export/products.csv">Export CSV</a>
+        </div>
+      </header>
+
+      <section id="overview" class="metric-grid"></section>
+
+      <section class="panel" id="agents">
+        <div class="panel-title">
+          <div>
+            <h2>Agents</h2>
+            <p>Each module has its own logs, settings and schedule.</p>
+          </div>
+          <button class="button primary" id="run-core">Run Core Pipeline</button>
+        </div>
+        <div id="agent-grid" class="agent-grid"></div>
+      </section>
+
+      <section class="panel" id="research">
+        <div class="panel-title">
+          <div>
+            <h2>Market Research</h2>
+            <p>Trends, keywords, competition, demand, profit and opportunity scores.</p>
+          </div>
+          <button class="button secondary" data-run-agent="market_research">Run Research</button>
+        </div>
+        <div class="table-wrap"><table id="research-table"></table></div>
+      </section>
+
+      <section class="panel" id="products">
+        <div class="panel-title">
+          <div>
+            <h2>Product Pipeline</h2>
+            <p>Research → Idea → Prompt → Artwork → Mockup → Listing → Approved → Published.</p>
+          </div>
+        </div>
+        <form id="manual-product" class="inline-form">
+          <input name="title" placeholder="Product title" required>
+          <input name="niche" placeholder="Niche" required>
+          <select name="product_type">
+            <option>wall art</option>
+            <option>framed print</option>
+            <option>poster</option>
+            <option>t-shirt</option>
+            <option>mug</option>
+            <option>canvas</option>
+          </select>
+          <input name="keywords" placeholder="keywords">
+          <button class="button primary" type="submit">Add Idea</button>
+        </form>
+        <div id="status-flow" class="status-flow"></div>
+        <div id="product-grid" class="product-grid"></div>
+      </section>
+
+      <section class="panel" id="approval">
+        <div class="panel-title">
+          <div>
+            <h2>Approval Queue</h2>
+            <p>Nothing publishes until approved. Risky IP terms block approval.</p>
+          </div>
+          <button class="button secondary" data-run-agent="approval_queue">Review Queue</button>
+        </div>
+        <div id="approval-list" class="stack"></div>
+      </section>
+
+      <section class="panel two-col" id="orders">
+        <div>
+          <div class="panel-title compact">
+            <h2>Orders</h2>
+            <button class="button secondary" data-run-agent="order">Pull Stub Orders</button>
+          </div>
+          <div id="orders-list" class="stack"></div>
+        </div>
+        <div>
+          <div class="panel-title compact">
+            <h2>Customer Service</h2>
+            <button class="button secondary" data-run-agent="customer_service">Draft Replies</button>
+          </div>
+          <div id="replies-list" class="stack"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="analytics">
+        <div class="panel-title">
+          <div>
+            <h2>Analytics</h2>
+            <p>Revenue, profit, order state, keywords, prompts and ROI.</p>
+          </div>
+          <button class="button secondary" data-run-agent="analytics">Refresh Analytics</button>
+        </div>
+        <div id="analytics-grid" class="metric-grid"></div>
+      </section>
+
+      <section class="panel" id="integrations">
+        <div class="panel-title">
+          <div>
+            <h2>Integrations</h2>
+            <p>Real automation runs only when these services are configured and connected.</p>
+          </div>
+        </div>
+        <div id="integrations-grid" class="agent-grid"></div>
+      </section>
+
+      <section class="panel" id="settings">
+        <div class="panel-title">
+          <div>
+            <h2>Settings & Scheduling</h2>
+            <p>Configure schedules now; API keys stay in environment variables.</p>
+          </div>
+        </div>
+        <div id="settings-list" class="stack"></div>
+      </section>
+
+      <section class="panel two-col" id="logs">
+        <div>
+          <div class="panel-title compact"><h2>Notifications</h2></div>
+          <div id="notifications-list" class="stack"></div>
+        </div>
+        <div>
+          <div class="panel-title compact"><h2>Logs</h2></div>
+          <div id="logs-list" class="log-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
